@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="text-center">
+        <h1 class="display-4 mb-4">Video Title & Idea Suggestion Tool</h1>
+        <p class="lead mb-5">Find inspiration for your next video with relevant title and keyword suggestions!</p>
+
+        <!-- Form for search input -->
+        <form action="/search" method="POST" class="d-flex justify-content-center mb-5">
+            <div class="input-group w-75">
+                <input type="text" id="query" name="query" class="form-control form-control-lg" placeholder="Enter a video title or idea" required>
+                <button type="submit" class="btn btn-primary btn-lg"><i class="fas fa-search me-2"></i>Search</button>
+            </div>
+        </form>
+
+        <div class="mt-5 mb-5">
+            <p class="lead text-center">
+                Our SEO Keyword Suggestor uses advanced algorithms to analyze trending topics and user engagement patterns. 
+                Simply enter a video title or idea, and we'll provide you with engagement predictions, recommended titles, 
+                and relevant keywords to boost your content's visibility. Whether you're a seasoned content creator or just 
+                starting out, our tool will help you craft compelling video titles that capture your audience's attention 
+                and improve your SEO rankings.
+            </p>
+            <p class="text-center">
+                <strong>Try it now and take your video content to the next level!</strong>
+            </p>
+        </div>
+    </div>
+    
+
+{% endblock %}

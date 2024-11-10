@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="text-center">
+        <h1 class="display-4 mb-4">Search Results</h1>
+        <p class="lead mb-5">for: "{{ search_query }}"</p>
+        
+        <!-- Predicted Engagement -->
+        <div class="card mb-5">
+            <div class="card-body">
+                <h2 class="card-title">Predicted Engagement</h2>
+                <p class="display-4 text-primary">{{ predicted_engagement }}</p>
+            </div>
+        </div>
+
+        <h3 class="mb-4">Top Recommended Video Titles</h3>
+        
+        <!-- Bootstrap table -->
+        <div class="table-responsive">
+            <table class="table table-hover table-striped">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Title</th>
+                        <th>Engagement Prediction</th>
+                        <th>Related Keywords</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for video in recommendations.itertuples() %}
+                        <tr>
+                            <td><i class="fas fa-video me-2 text-primary"></i>{{ video.Title }}</td>
+                            <td><span class="badge bg-success">{{ video.engagement_prediction }}</span></td>
+                            <td>
+                                {% for keyword in video.related_keywords.split(', ') %}
+                                    <span class="badge bg-secondary me-1">{{ keyword }}</span>
+                                {% endfor %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Link to go back to the home page -->
+        <a href="/" class="btn btn-primary btn-lg mt-4"><i class="fas fa-home me-2"></i>Go Back</a>
+    </div>
+{% endblock %}
